@@ -1,0 +1,65 @@
+<?php
+    require_once( 'layout/main.php');
+    require_once('App/services/AnimalService.php');
+    
+    $pagina = "Adoção de cachorros";
+
+    use App\Services\AnimalService;
+    
+    $service = new AnimalService();
+    $pets = $service->getAnimal(1);
+?>    
+<link rel="stylesheet" href="css/registrar.css">
+<div class="container-fluid img-pets">
+    <div class="row">
+        <?php
+            foreach($pets as $p){
+                $idade = $p['idade'];
+                if($idade > 12){
+                    $idade = $idade / 12;
+                };
+                 
+
+                echo '
+                <div class="col-sm-3 col-md-4">
+                    <div class="borda-rosa card borda-sombra"">';
+                echo '<img src="images/' . $p['imagem'] . '" class="img-thumbnail">';
+                echo '<div class="card-body">
+                           <center> <h5 class="card-title">' . $p['nome'] . '</h5><center>';
+                echo        '<p class="card-text">Idade: ' . round($idade) .' ano(s)</p> &nbsp | &nbsp';
+                
+                switch($p["sexo"]){
+                    case "M":
+                        echo '<p class="card-text">Gênero: Macho</p>';
+                    break;
+                    case "F":
+                        echo '<p class="card-text">Gênero: Fêmea</p>';
+                    break;                    
+                }
+                
+                // switch($p["porte"]){
+                //     case 1:
+                //         echo '<p class="card-text">Porte: Pequeno</p>';
+                //     break;
+                //     case 2:
+                //         echo '<p class="card-text">Porte: Médio</p>';
+                //     break;
+                //     case 3:
+                //         echo '<p class="card-text">Porte: Grande</p>';
+                //     break;
+                // }
+                
+                echo        '<form action="App\controllers\AnimalController.php" method="POST">
+                                <input type="hidden" name="action" value="adotar">
+                                <input type="hidden" name="id" value="' . $p["id"] . '">
+                                <center><button type="submit" class="borda btn btn-primary margin">Adotar</button></center>
+                            </form>   
+                        </div>
+                    </div>
+                </div>';
+            }
+        ?>
+    </div>
+</div>
+
+<?php require_once('layout/footer.php'); ?>    
