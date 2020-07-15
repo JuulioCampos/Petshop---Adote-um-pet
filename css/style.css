@@ -9,7 +9,13 @@ body{
 .navtitle{
     display: flex;
 }
-
+.nav-link.borda.fixado{
+    width: auto !important;
+}
+.borda.btn.btn-primary.margin, .borda.btn.btn-primary, {
+width: 160px !important;
+height: 35px;;
+}
 .bar {
 	padding-right: 10vh;
 	padding-left: 10vh;
@@ -17,7 +23,9 @@ body{
 	opacity: 0.1;
 	font-size: 10vh;
 }
-
+.borda.btn.btn-primary {
+    width: 139px;
+}
 .fa {
 	font-size: 2.5rem !important;
     color: #dc6465;
@@ -61,6 +69,7 @@ footer{
 .registrar-form{
     margin: 25px 0;
 }
+
 .borda{
     border-radius: 51px 51px 51px 51px !important;
     -webkit-border-radius: 51px 51px 51px 51px;
@@ -68,6 +77,12 @@ footer{
     border: 1px solid white !important;
     background-color: #dc6465 !important;
     padding: 1px;
+}
+.botoes-ininiais {
+    display: flex;
+}
+.nav-link.borda {
+    width: 140px;
 }
 .borda:hover{
     background-color: #e63d3d !important;
@@ -131,7 +146,15 @@ fieldset{
         left: 21%;
     }
     .bar{
-        display: none;
+        display: block;
+        padding-left: 5px; ;
+        padding-right: 5px; ;
+    }
+    .indent, .indent-second.justify-content-end{
+        width: 91%;
+    }
+    .borda.btn.btn-primary {
+        width: 139px;
     }
 
 }
